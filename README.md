@@ -4,9 +4,14 @@ This is an app that lets you hide text in images using simple steganography.
 
 ### Usage
 
+On your machine:
 ```bash
-open idnex.html
+git clone https://github.com/yssf-io/hide-me
+cd hide-me
+open index.html
 ```
+
+Or try directly at [hide.yssf.io](https://hide.yssf.io).
 
 #### Encoding
 
