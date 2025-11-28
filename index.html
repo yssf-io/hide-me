@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steganography App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Steganography<span class="dot">.</span></h1>
+            <p>Hide messages inside images securely.</p>
+        </header>
+
+        <main>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="encode">Hide Text</button>
+                <button class="tab-btn" data-tab="decode">Reveal Text</button>
+            </div>
+
+            <div class="content-area">
+                <!-- Shared Drop Zone -->
+                <div id="drop-zone" class="drop-zone">
+                    <div class="drop-content">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                        <p>Drag & Drop your PNG image here</p>
+                        <span class="sub-text">or click to browse</span>
+                    </div>
+                    <input type="file" id="file-input" accept="image/png" hidden>
+                </div>
+
+                <!-- Image Preview -->
+                <div id="image-preview-container" class="hidden">
+                    <img id="preview-img" src="" alt="Preview">
+                    <button id="remove-img" class="icon-btn" title="Remove Image">&times;</button>
+                </div>
+
+                <!-- Encode Section -->
+                <div id="encode-panel" class="panel active">
+                    <div class="input-group">
+                        <label for="secret-text">Message to Hide</label>
+                        <textarea id="secret-text" placeholder="Type your secret message here..."></textarea>
+                    </div>
+                    <button id="encode-btn" class="primary-btn" disabled>Encode & Download</button>
+                </div>
+
+                <!-- Decode Section -->
+                <div id="decode-panel" class="panel">
+                    <div class="input-group">
+                        <label>Decoded Message</label>
+                        <div id="decoded-output" class="output-box placeholder">
+                            Waiting for image...
+                        </div>
+                    </div>
+                    <button id="decode-btn" class="primary-btn" disabled>Decode Message</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Hidden Canvas for Processing -->
+    <canvas id="process-canvas" hidden></canvas>
+
+    <script src="stego.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
